@@ -1,38 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simulasi Perhitungan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background: #f7f7f7;
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .result div {
+            margin-bottom: 8px;
+        }
+    </style>
 </head>
+
 <body>
-    <table cellpadding="10" cellspacing="0">
-        <tbody>
-            <tr>
-                <td>Expetation</td>
-                <td>:</td>
-                <td>
-                    <input type="text" placeholder="Masukkan Nama Ekspetasi">
-                </td>
-            </tr>
-            <tr>
-                <td>Jumlah</td>
-                <td>:</td>
-                <td>
-                    <input type="text" placeholder="Masukkan Jumlah">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <button type="reset">
-                        Batalkan
-                    </button>
-                    <button type="submit">
-                        Simulasikan
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+    <div class="card">
+        <h2>Simulasi Perhitungan</h2>
+
+        <div class="form-group">
+            <label>Omzet Store / Hari</label>
+            <input type="text" id="omzetHarianView" placeholder="Contoh: 1.000.000" oninput="formatOmzet()">
+            <input type="hidden" id="omzetHarian">
+        </div>
+
+
+        <div class="form-group">
+            <label>Jumlah SKC</label>
+            <input type="number" id="jumlahSkc" placeholder="Contoh: 2">
+        </div>
+
+        <button onclick="hitung()">Simulasikan</button>
+
+        <div class="result" id="hasil" style="display:none;">
+            <hr>
+            <div><strong>Omzet / Bulan:</strong> <span id="omzetBulanan"></span></div>
+            <div><strong>Harga SKC:</strong> <span id="hargaSkc"></span></div>
+            <div><strong>Profit / Hari:</strong> <span id="profitHarian"></span></div>
+            <div><strong>Per Bulan:</strong> <span id="profitBulanan"></span></div>
+            <div><strong>Quartal (3 Bulan):</strong> <span id="quartal"></span></div>
+        </div>
+    </div>
+
+    <script>
+        function formatRupiahInput(value) {
+            value = value.replace(/[^0-9]/g, '');
+            return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function formatOmzet() {
+            const inputView = document.getElementById('omzetHarianView');
+            const inputReal = document.getElementById('omzetHarian');
+
+            let raw = inputView.value.replace(/\./g, '');
+            inputReal.value = raw;
+
+            inputView.value = formatRupiahInput(raw);
+        }
+
+        function formatRupiah(angka) {
+            return 'Rp ' + angka.toLocaleString('id-ID');
+        }
+
+        function hitung() {
+            const omzetHarian = parseFloat(document.getElementById('omzetHarian').value) || 0;
+            const jumlahSkc = parseInt(document.getElementById('jumlahSkc').value) || 0;
+
+            const omzetBulanan = omzetHarian * 30;
+            const hargaSkc = jumlahSkc * 25000000;
+
+            const profitHarian = (omzetHarian * 0.0083) * jumlahSkc;
+            const profitBulanan = (omzetBulanan * 0.0083) * jumlahSkc;
+            const quartal = profitBulanan * 3;
+
+            document.getElementById('omzetBulanan').innerText = formatRupiah(omzetBulanan);
+            document.getElementById('hargaSkc').innerText = formatRupiah(hargaSkc);
+            document.getElementById('profitHarian').innerText = formatRupiah(profitHarian);
+            document.getElementById('profitBulanan').innerText = formatRupiah(profitBulanan);
+            document.getElementById('quartal').innerText = formatRupiah(quartal);
+
+            document.getElementById('hasil').style.display = 'block';
+        }
+    </script>
+
 </body>
+
 </html>
