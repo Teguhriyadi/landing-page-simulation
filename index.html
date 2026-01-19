@@ -1,196 +1,692 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Simulasi Perhitungan</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title>Landing Page Laundry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background: #f7f7f7;
-            margin: 0;
+            font-family:
+                "Inter",
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                sans-serif;
+            background: #f5f9ff;
+            letter-spacing: -0.01em;
         }
 
-        .card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+        .navbar-yulo {
+            background-image: url("image/Header.png");
+            background-size: cover;
+            background-position: right center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            margin-left: -30px;
+            margin-right: -30px;
         }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
+        .navbar-yulo .navbar-brand {
+            color: #fff !important;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            font-size: 20px;
         }
 
-        .form-group {
-            margin-bottom: 16px;
+        .navbar-yulo .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 0 6px;
         }
 
-        label {
-            font-weight: bold;
+        .navbar-yulo .nav-link:hover {
+            color: #fff !important;
+        }
+
+        .navbar-yulo .btn-wa {
+            background: linear-gradient(135deg, #4d896a, #1e5443);
+            color: #ffffff;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 26px;
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            box-shadow: 0 6px 14px rgba(47, 111, 86, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .btn-wa {
+            background: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            padding: 6px 16px;
             font-size: 14px;
         }
 
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-top: 6px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #0d6efd, #39c6ff);
+            color: #fff;
+            padding: 80px 0;
+            border-radius: 0 0 50px 50px;
         }
 
-        input:focus {
-            outline: none;
-            border-color: #007bff;
+        .hero-badge {
+            background: #ffffff33;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 12px;
         }
 
-        button {
-            margin-top: 20px;
-            padding: 14px;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            background: #007bff;
+        .btn-consult {
+            background: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            padding: 10px 22px;
+            border: none;
+            font-weight: 500;
+        }
+
+        /* ===== CARD STYLE ===== */
+        .card-soft {
+            border: none;
+            border-radius: 22px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: #0d6efd;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        /* ===== ICON BOX ===== */
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: #ffffff33;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .bg-gradient {
+            background: linear-gradient(135deg, #0d6efd, #39c6ff);
+            color: #fff;
+        }
+
+        .step-box {
+            background: #0d6efd;
+            color: #fff;
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .hero-banner {
+            position: relative;
+            min-height: 850px;
+            padding: 100px 0;
+            background: url("/image/Banner.png") no-repeat right center;
+            background-size: contain;
+            /* 🔥 INI KUNCI UTAMANYA */
+            background-color: #ffffff;
+            /* isi sisa area kiri */
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0.96) 0%,
+                    rgba(255, 255, 255, 0.85) 25%,
+                    rgba(255, 255, 255, 0.55) 45%,
+                    rgba(255, 255, 255, 0.25) 60%,
+                    rgba(255, 255, 255, 0.05) 72%,
+                    rgba(255, 255, 255, 0) 85%);
+            z-index: 1;
+        }
+
+        .hero-banner .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: "Inter", sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+        }
+
+        .hero-text .hero-big {
+            font-size: 56px;
+            color: #4a90e2;
+        }
+
+        .hero-text h5 {
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #4a90e2;
+            color: #fff;
+            border-radius: 999px;
+            padding: 8px 18px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .btn-consult-yulo {
+            background: linear-gradient(135deg, #2f6f56, #4f9b7b);
             color: #fff;
             border: none;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        .result {
-            margin-top: 20px;
+            border-radius: 999px;
+            padding: 12px 26px;
+            font-family: "Inter", sans-serif;
             font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(47, 111, 86, 0.35);
+            transition: all 0.25s ease;
         }
 
-        .result div {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
+        .btn-consult-yulo:hover {
+            background: linear-gradient(135deg, #2a624d, #438f71);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(47, 111, 86, 0.45);
+        }
+    </style>
+
+    <style>
+        .footer-yulo {
+            background-image: url("image/Footer.png");
+            background-size: cover;
+            background-position: right center;
+            color: #ffffff;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            margin: 0;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-yulo .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-logo {
+            height: 80px;
+        }
+
+        .footer-address {
+            font-size: 20px;
+            line-height: 1.6;
+            opacity: 0.95;
+            margin-bottom: 18px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.25s ease;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .footer-wa {
+            display: inline-flex;
+            align-items: center;
             gap: 10px;
+            background: linear-gradient(135deg, #4d896a, #1e5443);
+            color: #ffffff;
+            border-radius: 999px;
+            padding: 14px 26px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            transition: all 0.25s ease;
         }
 
-        .result strong {
-            color: #333;
+        .footer-wa:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 28px rgba(0, 0, 0, 0.35);
+            color: #ffffff;
         }
 
-        .result span {
-            font-weight: bold;
-            color: #007bff;
-            text-align: right;
+        .footer-email {
+            font-size: 18px;
+            letter-spacing: 0.08em;
+            opacity: 0.95;
         }
 
-        @media (max-width: 480px) {
-            body {
-                padding: 12px;
+        .footer-email i {
+            margin-right: 10px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .footer-yulo {
+                padding: 50px 0 40px;
             }
 
-            .card {
-                padding: 16px;
+            .footer-right {
+                text-align: left !important;
             }
 
-            h2 {
-                font-size: 18px;
-            }
-
-            input {
-                font-size: 15px;
-                padding: 10px;
-            }
-
-            button {
-                font-size: 15px;
-                padding: 12px;
+            .footer-wa,
+            .footer-email {
+                font-size: 16px;
+                letter-spacing: 0.04em;
             }
         }
     </style>
 
+    <style>
+        .batch-section {
+            background: #ffffff;
+            padding: 80px 0 0;
+            /* 🔥 bawah dikurangin */
+            position: relative;
+            z-index: 2;
+        }
+
+        .batch-stats {
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .batch-city {
+            font-size: 18px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .batch-status {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .batch-status.sold {
+            color: #c5524a;
+        }
+
+        .batch-status.sisa {
+            color: #4a90e2;
+        }
+
+        .batch-note {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.4;
+        }
+
+        .batch-divider {
+            position: relative;
+        }
+
+        .batch-divider::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 15%;
+            bottom: 15%;
+            width: 2px;
+            background: #e0e0e0;
+        }
+
+        .batch-divider::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 15%;
+            bottom: 15%;
+            width: 2px;
+            background: #e0e0e0;
+        }
+
+        /* CTA */
+        .batch-cta {
+            position: relative;
+            top: 220px;
+            background: transparent;
+        }
+
+        .batch-title {
+            font-family: "Inter", sans-serif;
+            font-size: 48px;
+            /* 🔥 BESAR kayak screenshot */
+            font-weight: 800;
+            color: #5a86c8;
+            /* 🔥 BIRU MUDA YULO */
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            /* 🔥 RAPET tapi enak dibaca */
+        }
+
+        .batch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #4d896a, #1e5443);
+            /* 🔥 HIJAU YULO */
+            color: #ffffff;
+            border-radius: 999px;
+            padding: 14px 28px;
+            font-family: "Inter", sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(47, 111, 86, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .batch-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 28px rgba(47, 111, 86, 0.45);
+            color: #ffffff;
+        }
+
+        .batch-phone {
+            max-width: 100%;
+            height: auto;
+            position: relative;
+            bottom: -120px;
+            z-index: 1;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            .batch-divider::before,
+            .batch-divider::after {
+                display: none;
+            }
+
+            .batch-stats>div {
+                margin-bottom: 30px;
+            }
+
+            .batch-title {
+                font-size: 30px;
+            }
+
+            .batch-cta {
+                text-align: center;
+            }
+
+            .batch-phone {
+                max-width: 280px;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-yulo fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="image/Logo-Yulo.png" style="width: 50%" alt="" />
+            </a>
 
-    <div class="card">
-        <h2>Simulasi Perhitungan</h2>
+            <button class="navbar-toggler text-white" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                ☰
+            </button>
 
-        <div class="form-group">
-            <label>Omzet Store / Hari</label>
-            <input type="text" id="omzetHarianView" placeholder="Contoh: 1.000.000" oninput="formatOmzet()">
-            <input type="hidden" id="omzetHarian">
+            <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+                <ul class="navbar-nav me-3">
+                    <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ESTIMASI POTENSI HASIL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">KENAPA BISNIS LAUNDRY?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">LAYANAN & FASILITAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">TAHAPAN KEMITRAAN</a>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-wa"> Konsultasi Sekarang </a>
+            </div>
         </div>
+    </nav>
 
-
-        <div class="form-group">
-            <label>Jumlah SKC</label>
-            <input type="number" id="jumlahSkc" placeholder="Contoh: 2">
+    <!-- HERO -->
+    <section class="hero-banner">
+        <div class="container h-100">
+            <div class="row align-items-center h-100"></div>
         </div>
+    </section>
 
-        <button onclick="hitung()">Simulasikan</button>
-
-        <div class="result" id="hasil" style="display:none;">
-            <hr>
-            <div><strong>Omzet / Bulan:</strong> <span id="omzetBulanan"></span></div>
-            <div><strong>Harga SKC:</strong> <span id="hargaSkc"></span></div>
-            <div><strong>Profit / Hari:</strong> <span id="profitHarian"></span></div>
-            <div><strong>Profit / Per Bulan:</strong> <span id="profitBulanan"></span></div>
-            <div><strong>Quartal (3 Bulan):</strong> <span id="quartal"></span></div>
+    <!-- ESTIMASI -->
+    <section class="py-5">
+        <div class="container">
+            <div class="card card-soft p-4">
+                <h4 class="section-title">Estimasi Potensi Hasil</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered text-center align-middle">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Level</th>
+                                <th>Modal</th>
+                                <th>Omzet</th>
+                                <th>Profit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SKC 1</td>
+                                <td>25 JT</td>
+                                <td>12 JT</td>
+                                <td>4 JT</td>
+                            </tr>
+                            <tr>
+                                <td>SKC 2</td>
+                                <td>50 JT</td>
+                                <td>22 JT</td>
+                                <td>7 JT</td>
+                            </tr>
+                            <tr>
+                                <td>SKC 3</td>
+                                <td>75 JT</td>
+                                <td>32 JT</td>
+                                <td>11 JT</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        function formatRupiahInput(value) {
-            value = value.replace(/[^0-9]/g, '');
-            return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-        }
+    <!-- KENAPA -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card card-soft h-100">
+                        <img src="https://images.unsplash.com/photo-1527515637462-daf8b3f1b64a?auto=format&fit=crop&w=900&q=80"
+                            class="img-fluid" />
+                        <div class="p-4">
+                            <h5 class="fw-bold">Kenapa Bisnis Laundry?</h5>
+                            <ul class="mt-3">
+                                <li>Kebutuhan rutin</li>
+                                <li>Repeat order tinggi</li>
+                                <li>Margin stabil</li>
+                                <li>Mudah dikelola</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-soft h-100">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80"
+                            class="img-fluid" />
+                        <div class="p-4">
+                            <h5 class="fw-bold">Kenapa Harus Kami?</h5>
+                            <ul class="mt-3">
+                                <li>Operasional 24/7</li>
+                                <li>Monitoring realtime</li>
+                                <li>Sistem modern</li>
+                                <li>Dukungan penuh</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        function formatOmzet() {
-            const inputView = document.getElementById('omzetHarianView');
-            const inputReal = document.getElementById('omzetHarian');
+    <!-- LAYANAN -->
+    <section class="bg-gradient py-5">
+        <div class="container text-center">
+            <h4 class="fw-bold mb-4">Layanan Modern</h4>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="icon-box">📱</div>
+                    <h6>Online Laundry</h6>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box">🧺</div>
+                    <h6>Drop-off Laundry</h6>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box">⏰</div>
+                    <h6>Self Laundry 24/7</h6>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            let raw = inputView.value.replace(/\./g, '');
-            inputReal.value = raw;
+    <section class="batch-section">
+        <div class="container">
+            <!-- TOP STATS -->
+            <div class="row text-center batch-stats">
+                <div class="col-md-4">
+                    <h6 class="batch-city">Yulo Ciputat</h6>
+                    <div class="batch-status sold">SOLD OUT<br />80 SKC</div>
+                    <small class="batch-note">*Sudah beroperasi</small>
+                </div>
 
-            inputView.value = formatRupiahInput(raw);
-        }
+                <div class="col-md-4 batch-divider">
+                    <h6 class="batch-city">Yulo Bekasi</h6>
+                    <div class="batch-status sold">SOLD OUT<br />100 SKC</div>
+                    <small class="batch-note">*Sedang dalam tahap renovasi</small>
+                </div>
 
-        function formatRupiah(angka) {
-            return 'Rp ' + angka.toLocaleString('id-ID');
-        }
+                <div class="col-md-4">
+                    <h6 class="batch-city">Yulo Jaksel</h6>
+                    <div class="batch-status sisa">SISA<br />30 SKC</div>
+                    <small class="batch-note">
+                        *Unit yang ditawarkan.<br />
+                        Segera masuk tahap renovasi
+                    </small>
+                </div>
+            </div>
 
-        function hitung() {
-            const omzetHarian = parseFloat(document.getElementById('omzetHarian').value) || 0;
-            const jumlahSkc = parseInt(document.getElementById('jumlahSkc').value) || 0;
+            <!-- BOTTOM CTA -->
+            <div class="row align-items-center batch-cta">
+                <div class="col-md-7">
+                    <h2 class="batch-title">
+                        Batch sisa sedikit,<br />
+                        jangan sampai kehabisan!
+                    </h2>
 
-            const omzetBulanan = omzetHarian * 30;
-            const hargaSkc = jumlahSkc * 25000000;
+                    <a href="#" class="batch-btn mt-4">
+                        <i class="bi bi-whatsapp"></i>
+                        Konsultasi Sekarang
+                    </a>
+                </div>
 
-            const profitHarian = (omzetHarian * 0.0083) * jumlahSkc;
-            const profitBulanan = (omzetBulanan * 0.0083) * jumlahSkc;
-            const quartal = profitBulanan * 3;
+                <div class="col-md-5 text-md-end mt-4 mt-md-0">
+                    <img src="image/HP.png" class="batch-phone" alt="App Preview" />
+                </div>
+            </div>
+        </div>
+    </section>
 
-            document.getElementById('omzetBulanan').innerText = formatRupiah(omzetBulanan);
-            document.getElementById('hargaSkc').innerText = formatRupiah(hargaSkc);
-            document.getElementById('profitHarian').innerText = formatRupiah(profitHarian);
-            document.getElementById('profitBulanan').innerText = formatRupiah(profitBulanan);
-            document.getElementById('quartal').innerText = formatRupiah(quartal);
+    <!-- FOOTER -->
+    <footer class="footer-yulo">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- LEFT -->
+                <div class="col-md-7 footer-left">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <img src="image/Logo-Footer.png" alt="Yulo" class="footer-logo" />
+                    </div>
 
-            document.getElementById('hasil').style.display = 'block';
-        }
-    </script>
+                    <p class="footer-address">
+                        South Quarter Tower C Lantai 10<br />
+                        Jl. R. A. Kartini, Cilandak Barat, Cilandak, Jakarta <br />
+                        Selatan (12430)
+                    </p>
 
+                    <div class="footer-social">
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-tiktok"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-5 footer-right text-md-end mt-4 mt-md-0">
+                    <a href="#" class="footer-wa">
+                        <i class="bi bi-whatsapp"></i>
+                        0822 9889 2988
+                    </a>
+
+                    <div class="footer-email mt-3">
+                        <i class="bi bi-envelope"></i>
+                        <span>Support@yulo.id</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
